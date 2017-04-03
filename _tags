@@ -1,0 +1,9 @@
+true : bin_annot, safe_string, package(bytes)
+
+<src> : include
+<src/*.byte> : custom
+<src/*.cm{x,o}> and not <src/dtoa.cmx>: for-pack(Dtoa)
+<src/*.cm{,x}a> : link_stubs(src/libdtoa)
+
+<test> : include
+<test/*>: use_dtoa, package(oUnit)

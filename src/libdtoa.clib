@@ -1,0 +1,4 @@
+cached_powers.o
+diy_fp.o
+ieee.o
+dtoa_stubs.o fast_dtoa.o
