@@ -1,0 +1,22 @@
+opam-version: "1.2"
+maintainer: "Marshall Roch <mroch@fb.com>"
+authors: ["Marshall Roch <mroch@fb.com>"]
+homepage: "https://github.com/flowtype/ocaml-dtoa"
+doc: "https://github.com/flowtype/ocaml-dtoa"
+license: "BSD"
+dev-repo: "https://github.com/flowtype/ocaml-dtoa.git"
+bug-reports: "https://github.com/flowtype/ocaml-dtoa/issues"
+tags: []
+available: [ ocaml-version >= "4.01.0"]
+depends:
+[
+  "ocamlfind" {build}
+  "ocamlbuild" {build}
+  "topkg" {build & >= "0.9.0"}
+]
+depopts: []
+build:
+[[
+  "ocaml" "pkg/pkg.ml" "build"
+          "--pinned" "%{pinned}%"
+]]
