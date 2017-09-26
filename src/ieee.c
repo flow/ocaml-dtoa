@@ -16,7 +16,7 @@
 const uint64_t kSignMask = UINT64_2PART_C(0x80000000, 00000000);
 const uint64_t kExponentMask = UINT64_2PART_C(0x7FF00000, 00000000);
 const uint64_t kSignificandMask = UINT64_2PART_C(0x000FFFFF, FFFFFFFF);
-const uint64_t kHiddenBit = UINT64_2PART_C(0x00100000, 00000000);
+const uint64_t kDoubleHiddenBit = UINT64_2PART_C(0x00100000, 00000000);
 const int kDoublePhysicalSignificandSize = 52;  // Excludes the hidden bit.
 const int kDoubleSignificandSize = 53;
 
@@ -49,10 +49,14 @@ bool double_is_special(double d) {
 static uint64_t d64_significand(uint64_t d64) {
   uint64_t significand = d64 & kSignificandMask;
   if (!d64_is_denormal(d64)) {
-    return significand + kHiddenBit;
+    return significand + kDoubleHiddenBit;
   } else {
     return significand;
   }
+}
+
+uint64_t double_significand(double d) {
+  return d64_significand(as_uint64(d));
 }
 
 static int d64_exponent(uint64_t d64) {
@@ -60,6 +64,10 @@ static int d64_exponent(uint64_t d64) {
 
   int biased_e = (int)((d64 & kExponentMask) >> kDoublePhysicalSignificandSize);
   return biased_e - kDoubleExponentBias;
+}
+
+int double_exponent(double d) {
+  return d64_exponent(as_uint64(d));
 }
 
 static int d64_sign(uint64_t d64) {
@@ -90,7 +98,7 @@ diy_fp double_as_normalized_diy_fp(double d) {
   int e = d64_exponent(d64);
 
   // The current double could be a denormal.
-  while ((f & kHiddenBit) == 0) {
+  while ((f & kDoubleHiddenBit) == 0) {
     f <<= 1;
     e--;
   }
@@ -102,7 +110,7 @@ diy_fp double_as_normalized_diy_fp(double d) {
   return r;
 }
 
-static bool double_lower_boundary_is_closer(double d) {
+bool double_lower_boundary_is_closer(double d) {
   // The boundary is closer if the significand is of the form f == 2^p-1 then
   // the lower boundary is closer.
   // Think of v = 1000e10 and v- = 9999e9.

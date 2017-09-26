@@ -52,6 +52,9 @@ let tests = "ecma_string_of_float" >::: [
     eq                     "NaN" (ecma_string_of_float Pervasives.nan);
     eq                "Infinity" (ecma_string_of_float Pervasives.infinity);
     eq               "-Infinity" (ecma_string_of_float Pervasives.neg_infinity);
+
+    (* grisu3 fails, uses bignum *)
+    eq             "0.000035689" (ecma_string_of_float 0.000035689);
   end;
 
   "round_trip" >:: begin fun ctxt ->

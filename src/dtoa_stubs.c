@@ -12,6 +12,7 @@
 #include <caml/mlvalues.h>
 #include <caml/memory.h>
 #include <caml/alloc.h>
+#include "bignum_dtoa.h"
 #include "fast_dtoa.h"
 
 typedef enum {
@@ -142,10 +143,9 @@ static int shortest_dtoa(double v, char *dst, int low_exp, int high_exp) {
   }
 
   success = fast_dtoa(v, FAST_DTOA_SHORTEST, 0, s2, &len, &decimal_point);
-  // If grisu3 was not able to convert the number to a string, then use old
-  // sprintf (suboptimal).
+  // If the fast dtoa didn't succeed use the slower bignum version.
   if (!success) {
-    return snprintf(s2, 20, "%.17g", v) + (int)(s2 - dst);
+    bignum_dtoa(v, BIGNUM_DTOA_SHORTEST, 0, s2, &len, &decimal_point);
   }
 
   // We now have an integer string of form "151324135" in s2 and a base-10
@@ -186,7 +186,7 @@ static int shortest_dtoa(double v, char *dst, int low_exp, int high_exp) {
 }
 
 static int ecma_dtoa(double v, char *dst) {
-  int decimal_point, len, success, i, exponent;
+  int decimal_point, d_exp, len, success, i, exponent;
   char *s2 = dst;
   assert(dst);
 
@@ -200,10 +200,9 @@ static int ecma_dtoa(double v, char *dst) {
   }
 
   success = fast_dtoa(v, FAST_DTOA_SHORTEST, 0, s2, &len, &decimal_point);
-  // If grisu3 was not able to convert the number to a string, then use old
-  // sprintf (suboptimal).
+  // If the fast dtoa didn't succeed use the slower bignum version.
   if (!success) {
-    return snprintf(s2, 20, "%.17g", v) + (int)(s2 - dst);
+    bignum_dtoa(v, BIGNUM_DTOA_SHORTEST, 0, s2, &len, &decimal_point);
   }
 
   // We now have an integer string of form "151324135" in s2 and the offset of
@@ -230,7 +229,7 @@ static int ecma_dtoa(double v, char *dst) {
 // Like David M. Gay's g_fmt, but using grisu3.
 // http://www.netlib.org/fp/g_fmt.c
 static int grisu3_g_fmt(double v, char *dst) {
-  int len, success, i, decimal_point;
+  int d_exp, len, success, i, decimal_point;
   char *s2 = dst;
   assert(dst);
 
@@ -244,10 +243,9 @@ static int grisu3_g_fmt(double v, char *dst) {
   }
 
   success = fast_dtoa(v, FAST_DTOA_SHORTEST, 0, s2, &len, &decimal_point);
-  // If grisu3 was not able to convert the number to a string, then use old
-  // sprintf (suboptimal).
+  // If the fast dtoa didn't succeed use the slower bignum version.
   if (!success) {
-    return snprintf(s2, 20, "%.17g", v) + (int)(s2 - dst);
+    bignum_dtoa(v, BIGNUM_DTOA_SHORTEST, 0, s2, &len, &decimal_point);
   }
 
   if (-3 <= decimal_point && decimal_point < len + 6) {
