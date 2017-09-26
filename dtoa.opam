@@ -1,5 +1,4 @@
 opam-version: "1.2"
-name: "dtoa"
 maintainer: "Marshall Roch <mroch@fb.com>"
 authors: ["Marshall Roch <mroch@fb.com>"]
 homepage: "https://github.com/flowtype/ocaml-dtoa"
