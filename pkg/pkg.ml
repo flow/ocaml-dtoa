@@ -7,7 +7,7 @@ open Topkg
 let build = Pkg.build ~cmd:Ocb_stubblr_topkg.cmd ()
 let opams =
   let lint_deps_excluding = Some ["ocb-stubblr"; "ounit"; "oUnit"] in
-  [Pkg.opam_file ~lint_deps_excluding "opam"]
+  [Pkg.opam_file ~lint_deps_excluding "dtoa.opam"]
 
 let () =
   Pkg.describe "dtoa"
