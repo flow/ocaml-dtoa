@@ -16,7 +16,7 @@
 extern const uint64_t kSignMask;
 extern const uint64_t kExponentMask;
 extern const uint64_t kSignificandMask;
-extern const uint64_t kHiddenBit;
+extern const uint64_t kDoubleHiddenBit;
 extern const int kPhysicalSignificandSize;
 extern const int kDoubleSignificandSize;
 
@@ -37,5 +37,9 @@ diy_fp double_as_normalized_diy_fp(double d);
 void double_normalized_boundaries(
   double d, diy_fp* out_m_minus, diy_fp* out_m_plus
 );
+
+int double_exponent(double d);
+uint64_t double_significand(double d);
+bool double_lower_boundary_is_closer(double d);
 
 #endif  // OCAML_DTOA_IEEE_H_

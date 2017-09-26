@@ -1,4 +1,6 @@
+bignum.o
 cached_powers.o
 diy_fp.o
+dtoa_stubs.o
 ieee.o
-dtoa_stubs.o fast_dtoa.o
+fast_dtoa.o

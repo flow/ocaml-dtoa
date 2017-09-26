@@ -52,6 +52,9 @@ let tests = "g_fmt" >::: [
     eq                     "NaN" (g_fmt Pervasives.nan);
     eq                "Infinity" (g_fmt Pervasives.infinity);
     eq               "-Infinity" (g_fmt Pervasives.neg_infinity);
+
+    (* grisu3 fails, uses bignum *)
+    eq               "3.5689e-5" (g_fmt 0.000035689);
   end;
 
   "round_trip" >:: begin fun ctxt ->

@@ -56,6 +56,9 @@ let tests = "shortest_string_of_float" >::: [
     eq                    "NaN" (shortest_string_of_float Pervasives.nan);
     eq               "Infinity" (shortest_string_of_float Pervasives.infinity);
     eq              "-Infinity" (shortest_string_of_float Pervasives.neg_infinity);
+
+    (* grisu3 fails, uses bignum *)
+    eq               "35689e-9" (shortest_string_of_float 0.000035689);
   end;
 
   "round_trip" >:: begin fun ctxt ->

@@ -16,6 +16,25 @@
 #define ASSERT(condition)         \
     assert(condition);
 #endif
+#ifndef UNIMPLEMENTED
+#define UNIMPLEMENTED() (abort())
+#endif
+// #ifndef DOUBLE_CONVERSION_NO_RETURN
+// #ifdef _MSC_VER
+// #define DOUBLE_CONVERSION_NO_RETURN __declspec(noreturn)
+// #else
+// #define DOUBLE_CONVERSION_NO_RETURN __attribute__((noreturn))
+// #endif
+// #endif
+#ifndef UNREACHABLE
+// #ifdef _MSC_VER
+// void DOUBLE_CONVERSION_NO_RETURN abort_noreturn();
+// inline void abort_noreturn() { abort(); }
+// #define UNREACHABLE()   (abort_noreturn())
+// #else
+#define UNREACHABLE()   (abort())
+// #endif
+#endif
 
 // The following macro works on both 32 and 64-bit platforms.
 // Usage: instead of writing 0x1234567890123456
