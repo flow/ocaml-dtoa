@@ -9,13 +9,9 @@ let opams =
   let lint_deps_excluding = Some ["ocb-stubblr"; "ounit"; "oUnit"] in
   [Pkg.opam_file ~lint_deps_excluding "dtoa.opam"]
 
-let distrib = Pkg.distrib
-  ~uri:"https://github.com/flowtype/ocaml-dtoa/archive/$(VERSION_NUM).tar.gz"
-  ()
-
 let () =
   Pkg.describe "dtoa"
-  ~build ~opams ~distrib
+  ~build ~opams
   ~licenses:[ Pkg.std_file "LICENSE" ]
   @@ fun c ->
   Ok [ Pkg.mllib "src/dtoa.mllib";
