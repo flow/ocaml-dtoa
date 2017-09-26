@@ -22,7 +22,7 @@ Many features of `double-conversion` are still missing. Patches are welcome!
 
 ## License
 
-`ocaml-dtoa` is [BSD-licensed](LICENSE). We also provide an additional [patent grant](PATENTS).
+`ocaml-dtoa` is [MIT-licensed](LICENSE).
 
 ## Author
 

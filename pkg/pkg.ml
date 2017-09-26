@@ -12,7 +12,7 @@ let opams =
 let () =
   Pkg.describe "dtoa"
   ~build ~opams
-  ~licenses:[ Pkg.std_file "LICENSE"; Pkg.std_file "PATENTS" ]
+  ~licenses:[ Pkg.std_file "LICENSE" ]
   @@ fun c ->
   Ok [ Pkg.mllib "src/dtoa.mllib";
        Pkg.clib "src/libdtoa.clib";
