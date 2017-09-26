@@ -1,0 +1,15 @@
+(jbuild_version 1)
+
+(library (
+  (name dtoa)
+  (public_name dtoa)
+  (c_names (
+    bignum
+    bignum_dtoa
+    cached_powers
+    diy_fp
+    dtoa_stubs
+    ieee
+    fast_dtoa
+  ))
+))

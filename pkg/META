@@ -1,7 +1,0 @@
-description = "converts OCaml floats into strings, using the efficient Grisu3 algorithm."
-version = "%%VERSION_NUM%%"
-requires = ""
-archive(byte) = "dtoa.cma"
-archive(native) = "dtoa.cmxa"
-plugin(byte) = "dtoa.cma"
-plugin(native) = "dtoa.cmxs"

@@ -1,7 +1,0 @@
-bignum.o
-bignum_dtoa.o
-cached_powers.o
-diy_fp.o
-dtoa_stubs.o
-ieee.o
-fast_dtoa.o
