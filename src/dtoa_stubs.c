@@ -68,8 +68,8 @@ static int i_to_str(int val, char *str) {
   return (int)(s - begin);
 }
 
-static int decimal(char *dst, int len, int decimal_point, flags flags) {
-  int leading_zero = flags & LEADING_ZERO;
+static int decimal(char *dst, int len, int decimal_point, flags flgs) {
+  int leading_zero = flgs & LEADING_ZERO;
   int d_exp = decimal_point - len, written = 0, shift = 0, j;
   if (decimal_point <= 0) {
     if (leading_zero) shift++;
@@ -96,7 +96,7 @@ static int decimal(char *dst, int len, int decimal_point, flags flags) {
   return written;
 }
 
-static int scientific(char *dst, int len, int decimal_point, flags flags) {
+static int scientific(char *dst, int len, int decimal_point, flags flgs) {
   int written = 0;
   int exponent = decimal_point - 1;
 
@@ -109,10 +109,10 @@ static int scientific(char *dst, int len, int decimal_point, flags flags) {
   }
   dst[len + written++] = 'e';
 
-  if (flags & PLUS_IN_EXPONENT && exponent > 0) {
+  if (flgs & PLUS_IN_EXPONENT && exponent > 0) {
     dst[len + written++] = '+';
   }
-  if (flags & PAD_EXPONENT && exponent > 0 && exponent < 10) {
+  if (flgs & PAD_EXPONENT && exponent > 0 && exponent < 10) {
     dst[len + written++] = '0';
   }
 
