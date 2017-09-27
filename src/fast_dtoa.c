@@ -344,7 +344,7 @@ static bool grisu3(double v,
     double_normalized_boundaries(v, &boundary_minus, &boundary_plus);
   } else {
     ASSERT(mode == FAST_DTOA_SHORTEST_SINGLE);
-    float single_v = (float)(v);
+    // float single_v = (float)(v);
     // Single(single_v).NormalizedBoundaries(&boundary_minus, &boundary_plus);
   }
   ASSERT(boundary_plus.e == w.e);

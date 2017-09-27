@@ -12,4 +12,8 @@
     ieee
     fast_dtoa
   ))
+  (c_flags (
+    -std=c99 -g -Wall
+    -Wshadow -Werror -Wextra -Wshadow -Wno-unused-parameter
+  ))
 ))

@@ -186,7 +186,7 @@ static int shortest_dtoa(double v, char *dst, int low_exp, int high_exp) {
 }
 
 static int ecma_dtoa(double v, char *dst) {
-  int decimal_point, d_exp, len, success, i, exponent;
+  int decimal_point, len, success, i, exponent;
   char *s2 = dst;
   assert(dst);
 
@@ -229,7 +229,7 @@ static int ecma_dtoa(double v, char *dst) {
 // Like David M. Gay's g_fmt, but using grisu3.
 // http://www.netlib.org/fp/g_fmt.c
 static int grisu3_g_fmt(double v, char *dst) {
-  int d_exp, len, success, i, decimal_point;
+  int len, success, i, decimal_point;
   char *s2 = dst;
   assert(dst);
 
