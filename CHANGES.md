@@ -1,3 +1,9 @@
+v0.3.1 2017-12-06
+--------------------------
+
+Install `js_of_ocaml` runtime stub via opam, and link it up automatically in `META`
+
+
 v0.3.0 2017-09-26
 --------------------------
 
