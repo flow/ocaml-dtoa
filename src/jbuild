@@ -16,4 +16,7 @@
     -std=c99 -g -Wall
     -Wshadow -Werror -Wextra -Wshadow -Wno-unused-parameter
   ))
+  (js_of_ocaml (
+    (javascript_files (../js/dtoa_stubs.js))
+  ))
 ))
