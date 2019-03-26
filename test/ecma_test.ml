@@ -42,6 +42,7 @@ let tests = "ecma_string_of_float" >::: [
     eq                  "1e+21" (ecma_string_of_float 1000000000000000000000.0);
     eq             "4294967272" (ecma_string_of_float 4294967272.0);
     eq "4.185580496821357e+298" (ecma_string_of_float 4.1855804968213567e298);
+    eq                      "0" (ecma_string_of_float 56e-13214125);
   end;
 
   "edge_cases" >:: begin fun ctxt ->
