@@ -16,7 +16,6 @@ build: [
   ["dune" "runtest" "-p" name "-j" jobs] {with-test}
 ]
 dev-repo: "git+https://github.com/flowtype/ocaml-dtoa.git"
-synopsis: "Converts OCaml floats into strings (doubles to ascii, 'd to a'), using the efficient Grisu3 algorithm"
 description: """
 This is a (partial) port of Google's double-conversion library from C++ to C.
 """
