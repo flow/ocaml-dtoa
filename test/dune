@@ -2,8 +2,8 @@
  (name test)
  (libraries dtoa ounit2))
 
-(alias
- (name runtest)
+(rule
+ (alias runtest)
  (deps
   (:< test.exe))
  (action
