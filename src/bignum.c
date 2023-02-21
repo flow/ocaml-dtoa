@@ -450,7 +450,7 @@ void bignum_multiply_by_power_of_ten(bignum* num, int exponent) {
 
 
 void bignum_times_10(bignum* num) {
-  return bignum_multiply_by_uint32(num, 10);
+  bignum_multiply_by_uint32(num, 10);
 }
 
 
