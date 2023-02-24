@@ -54,6 +54,8 @@ let tests = "ecma_string_of_float" >::: [
     eq                "Infinity" (ecma_string_of_float infinity);
     eq               "-Infinity" (ecma_string_of_float neg_infinity);
 
+    eq "-0.0000013475801431957922" (ecma_string_of_float (-0.0000013475801431957922));
+
     (* grisu3 fails, uses bignum *)
     eq             "0.000035689" (ecma_string_of_float 0.000035689);
   end;
