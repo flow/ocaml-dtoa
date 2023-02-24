@@ -50,9 +50,9 @@ let tests = "ecma_string_of_float" >::: [
 
     eq                  "5e-324" (ecma_string_of_float 5e-324);
     eq "1.7976931348623157e+308" (ecma_string_of_float 1.7976931348623157e308);
-    eq                     "NaN" (ecma_string_of_float Pervasives.nan);
-    eq                "Infinity" (ecma_string_of_float Pervasives.infinity);
-    eq               "-Infinity" (ecma_string_of_float Pervasives.neg_infinity);
+    eq                     "NaN" (ecma_string_of_float nan);
+    eq                "Infinity" (ecma_string_of_float infinity);
+    eq               "-Infinity" (ecma_string_of_float neg_infinity);
 
     (* grisu3 fails, uses bignum *)
     eq             "0.000035689" (ecma_string_of_float 0.000035689);

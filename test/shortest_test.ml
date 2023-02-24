@@ -53,9 +53,9 @@ let tests = "shortest_string_of_float" >::: [
 
     eq                 "5e-324" (shortest_string_of_float 5e-324);
     eq  "17976931348623157e292" (shortest_string_of_float 1.7976931348623157e308);
-    eq                    "NaN" (shortest_string_of_float Pervasives.nan);
-    eq               "Infinity" (shortest_string_of_float Pervasives.infinity);
-    eq              "-Infinity" (shortest_string_of_float Pervasives.neg_infinity);
+    eq                    "NaN" (shortest_string_of_float nan);
+    eq               "Infinity" (shortest_string_of_float infinity);
+    eq              "-Infinity" (shortest_string_of_float neg_infinity);
 
     (* grisu3 fails, uses bignum *)
     eq               "35689e-9" (shortest_string_of_float 0.000035689);

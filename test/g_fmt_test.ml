@@ -49,9 +49,9 @@ let tests = "g_fmt" >::: [
 
     eq                  "5e-324" (g_fmt 5e-324);
     eq "1.7976931348623157e+308" (g_fmt 1.7976931348623157e308);
-    eq                     "NaN" (g_fmt Pervasives.nan);
-    eq                "Infinity" (g_fmt Pervasives.infinity);
-    eq               "-Infinity" (g_fmt Pervasives.neg_infinity);
+    eq                     "NaN" (g_fmt nan);
+    eq                "Infinity" (g_fmt infinity);
+    eq               "-Infinity" (g_fmt neg_infinity);
 
     (* grisu3 fails, uses bignum *)
     eq               "3.5689e-5" (g_fmt 0.000035689);
