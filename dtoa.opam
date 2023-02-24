@@ -3,9 +3,9 @@ synopsis: "Converts OCaml floats into strings, using the efficient Grisu3 algori
 maintainer: "Marshall Roch <mroch@meta.com>"
 authors: "Marshall Roch <mroch@meta.com>"
 license: "MIT"
-homepage: "https://github.com/flowtype/ocaml-dtoa"
-doc: "https://github.com/flowtype/ocaml-dtoa"
-bug-reports: "https://github.com/flowtype/ocaml-dtoa/issues"
+homepage: "https://github.com/flow/ocaml-dtoa"
+doc: "https://github.com/flow/ocaml-dtoa"
+bug-reports: "https://github.com/flow/ocaml-dtoa/issues"
 depends: [
   "ocaml" {>= "4.01.0"}
   "dune" {>= "1.0"}
@@ -15,7 +15,7 @@ build: [
   ["dune" "build" "-p" name "-j" jobs]
   ["dune" "runtest" "-p" name "-j" jobs] {with-test}
 ]
-dev-repo: "git+https://github.com/flowtype/ocaml-dtoa.git"
+dev-repo: "git+https://github.com/flow/ocaml-dtoa.git"
 description: """
 This is a (partial) port of Google's double-conversion library from C++ to C.
 """
