@@ -260,7 +260,7 @@ static int grisu3_g_fmt(double v, char *dst) {
 
 CAMLprim value flow_shortest_string_of_float(value num) {
   CAMLparam1(num);
-  char str[32]; // the max length is probably 18, but better safe than sorry
+  char str[32]; // the max length is probably 24, but better safe than sorry
   int len = shortest_dtoa(Double_val(num), str, -3, 3);
   assert(len > 0 && len < 25);
   CAMLreturn(caml_copy_string(str));
@@ -268,15 +268,15 @@ CAMLprim value flow_shortest_string_of_float(value num) {
 
 CAMLprim value flow_ecma_string_of_float(value num) {
   CAMLparam1(num);
-  char str[32]; // the max length is probably 18, but better safe than sorry
+  char str[32]; // the max length is probably 25 (ECMAScript 6.1.6.1.20), but better safe than sorry
   int len = ecma_dtoa(Double_val(num), str);
-  assert(len > 0 && len < 25);
+  assert(len > 0 && len <= 25);
   CAMLreturn(caml_copy_string(str));
 }
 
 CAMLprim value flow_g_fmt(value num) {
   CAMLparam1(num);
-  char str[32]; // the max length is probably 18, but better safe than sorry
+  char str[32]; // the max length is probably 24, but better safe than sorry
   int len = grisu3_g_fmt(Double_val(num), str);
   assert(len > 0 && len < 25);
   CAMLreturn(caml_copy_string(str));
