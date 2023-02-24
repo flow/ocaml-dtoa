@@ -1,5 +1,5 @@
 opam-version: "2.0"
-synopsis: "Converts OCaml floats into strings, using the efficient Grisu3 algorithm."
+synopsis: "Converts OCaml floats into strings, using the efficient Grisu3 algorithm"
 maintainer: "Marshall Roch <mroch@fb.com>"
 authors: "Marshall Roch <mroch@fb.com>"
 license: "MIT"
