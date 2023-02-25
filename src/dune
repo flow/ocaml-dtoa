@@ -1,19 +1,19 @@
 (rule
- (enabled_if
-  (= %{ocaml-config:ccomp_type} cc))
  (action
   (with-stdout-to
    c_flags.sexp
    (echo
-     "(-std=c99 -g -Wall -Wshadow -Werror -Wextra -Wshadow -Wno-unused-parameter)"))))
+     "(-std=c99 -g -Wall -Wshadow -Werror -Wextra -Wshadow -Wno-unused-parameter)")))
+ (enabled_if
+  (= %{ocaml-config:ccomp_type} cc)))
 
 (rule
- (enabled_if
-  (<> %{ocaml-config:ccomp_type} cc))
  (action
   (with-stdout-to
    c_flags.sexp
-   (echo "()"))))
+   (echo "()")))
+ (enabled_if
+  (<> %{ocaml-config:ccomp_type} cc)))
 
 (library
  (name dtoa)
