@@ -28,6 +28,10 @@ jobs:
       - uses: ilammy/msvc-dev-cmd@v1
         if: ${{ endsWith(matrix.ocaml-compiler, 'msvc64') }}
 
+      - name: Remove conflicting /usr/bin/link
+        run: rm D:\cygwin\bin\link.exe
+        if: ${{ endsWith(matrix.ocaml-compiler, 'msvc64') }}
+
       - name: Use OCaml ${{ matrix.ocaml-compiler }}
         uses: ocaml/setup-ocaml@v2
         with:
