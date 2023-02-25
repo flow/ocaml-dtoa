@@ -1,13 +1,18 @@
 (rule
- (enabled_if (= %{ocaml-config:ccomp_type} cc))
+ (enabled_if
+  (= %{ocaml-config:ccomp_type} cc))
  (action
-  (with-stdout-to c_flags.sexp
-   (echo "(-std=c99 -g -Wall -Wshadow -Werror -Wextra -Wshadow -Wno-unused-parameter)"))))
+  (with-stdout-to
+   c_flags.sexp
+   (echo
+     "(-std=c99 -g -Wall -Wshadow -Werror -Wextra -Wshadow -Wno-unused-parameter)"))))
 
 (rule
- (enabled_if (<> %{ocaml-config:ccomp_type} cc))
+ (enabled_if
+  (<> %{ocaml-config:ccomp_type} cc))
  (action
-  (with-stdout-to c_flags.sexp
+  (with-stdout-to
+   c_flags.sexp
    (echo "()"))))
 
 (library
@@ -16,6 +21,7 @@
  (foreign_stubs
   (language c)
   (names bignum bignum_dtoa cached_powers diy_fp dtoa_stubs ieee fast_dtoa)
-  (flags (:include c_flags.sexp)))
+  (flags
+   (:include c_flags.sexp)))
  (js_of_ocaml
   (javascript_files ../js/dtoa_stubs.js)))
