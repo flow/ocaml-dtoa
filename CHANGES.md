@@ -1,3 +1,11 @@
+v0.3.3 2023-02-25
+--------------------------
+
+- Fixed `assert` on very long outputs (thanks @nevor!)
+- Support MSVC (thanks @nojb!)
+- Fixed tests under ocaml 5
+
+
 v0.3.2 2019-06-16
 --------------------------
 
