@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017-present, Facebook, Inc.
+ * Copyright (c) Meta Platforms, Inc. and affiliates.
  * Copyright (c) 2010, the V8 project authors.
  *
  * This source code is licensed under the MIT license found in the
