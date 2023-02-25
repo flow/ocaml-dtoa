@@ -25,6 +25,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - uses: ilammy/msvc-dev-cmd@v1
+        if: ${{ endsWith(matrix.ocaml-compiler, 'msvc64') }}
+
       - name: Use OCaml ${{ matrix.ocaml-compiler }}
         uses: ocaml/setup-ocaml@v2
         with:
