@@ -15,6 +15,9 @@ jobs:
           - windows-latest
         ocaml-compiler:
           - 4.14.x
+        include:
+          - os: windows-latest
+            ocaml-compiler: ocaml-variants.4.14.1+msvc64
 
     runs-on: ${{ matrix.os }}
 
