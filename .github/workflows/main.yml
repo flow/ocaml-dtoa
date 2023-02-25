@@ -17,7 +17,7 @@ jobs:
           - 4.14.x
         include:
           - os: windows-latest
-            ocaml-compiler: ocaml-variants.4.14.0+msvc64
+            ocaml-compiler: ocaml-variants.4.14.0+msvc64c
 
     runs-on: ${{ matrix.os }}
 
@@ -28,14 +28,14 @@ jobs:
       - uses: ilammy/msvc-dev-cmd@v1
         if: ${{ endsWith(matrix.ocaml-compiler, 'msvc64') }}
 
-      - name: Remove conflicting /usr/bin/link
-        run: rm D:\cygwin\bin\link.exe
-        if: ${{ endsWith(matrix.ocaml-compiler, 'msvc64') }}
-
       - name: Use OCaml ${{ matrix.ocaml-compiler }}
         uses: ocaml/setup-ocaml@v2
         with:
           ocaml-compiler: ${{ matrix.ocaml-compiler }}
+
+      - name: Remove conflicting /usr/bin/link
+        run: rm D:\cygwin\bin\link.exe
+        if: ${{ endsWith(matrix.ocaml-compiler, 'msvc64') }}
 
       - run: opam install . --deps-only --with-test
 
